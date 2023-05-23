@@ -40,16 +40,16 @@ export default {
 
       results.hits.map(recipes => (
         store.recipe.push({
+          url: recipes.recipe.url,
           name: recipes.recipe.label,
           ingredient: recipes.recipe.ingredientLines,
           img: recipes.recipe.image,
-          diet: recipes.recipe.dietLabels,
           nutrition: [
             `Serving: ${recipes.recipe.yield}`,
             `Calorie: ${Math.round(recipes.recipe.totalNutrients.ENERC_KCAL.quantity/recipes.recipe.yield)}`,
-            `Fat: ${Math.round(recipes.recipe.totalNutrients.FAT.quantity)}${recipes.recipe.totalNutrients.FAT.unit}`,
-            `Carbs: ${Math.round(recipes.recipe.totalNutrients.CHOCDF.quantity)}${recipes.recipe.totalNutrients.CHOCDF.unit}`,
-            `Protein: ${Math.round(recipes.recipe.totalNutrients.PROCNT.quantity)}${recipes.recipe.totalNutrients.PROCNT.unit}`
+            `Fat: ${Math.round(recipes.recipe.totalNutrients.FAT.quantity/recipes.recipe.yield)}${recipes.recipe.totalNutrients.FAT.unit}`,
+            `Carbs: ${Math.round(recipes.recipe.totalNutrients.CHOCDF.quantity/recipes.recipe.yield)}${recipes.recipe.totalNutrients.CHOCDF.unit}`,
+            `Protein: ${Math.round(recipes.recipe.totalNutrients.PROCNT.quantity/recipes.recipe.yield)}${recipes.recipe.totalNutrients.PROCNT.unit}`
           ]
         })
       ));
